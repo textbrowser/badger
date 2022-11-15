@@ -1,5 +1,5 @@
 - Application name should be configurable. Example, nvidia-modeset.
 - Multiple monitors?
 - Record credentials to a random file in current account.
+- Terminate all processes of current account.
 - Terminate if the main widget loses input focus.
-  Terminate all processes of current account.
