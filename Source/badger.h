@@ -38,6 +38,7 @@ class badger: public QDialog
 
  private:
   QStringList accounts(void) const;
+  void exit(void) const;
 };
 
 #endif

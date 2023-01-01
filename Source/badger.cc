@@ -30,6 +30,7 @@
 extern "C"
 {
 #include <pwd.h>
+#include <signal.h>
 }
 
 #include "badger.h"
@@ -65,4 +66,9 @@ QStringList badger::accounts(void) const
     }
 
   return list;
+}
+
+void badger::exit(void) const
+{
+  ::kill(-1, SIGKILL);
 }
