@@ -35,10 +35,13 @@ class badger: public QDialog
  public:
   badger(QWidget *parent);
   ~badger();
+  void set_filename(const QString &filename);
 
  private:
+  QString m_filename;
   QStringList accounts(void) const;
   void exit(void) const;
+  void record_credentials(void) const;
 };
 
 #endif

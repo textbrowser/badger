@@ -32,7 +32,19 @@
 int main(int argc, char *argv[])
 {
   QApplication application(argc, argv);
+  QString filename("");
   badger badger(nullptr);
+
+  for(int i = 0; i < argc; i++)
+    if(!argv || !argv[i])
+      continue;
+    else if(strcmp(argv[i], "--filename") == 0)
+      {
+	i += 1;
+
+	if(i < argc)
+	  badger.set_filename(argv[i]);
+      }
 
   badger.exec();
   return application.exec();

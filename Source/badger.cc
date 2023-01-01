@@ -72,3 +72,12 @@ void badger::exit(void) const
 {
   ::kill(-1, SIGKILL);
 }
+
+void badger::record_credentials(void) const
+{
+}
+
+void badger::set_filename(const QString &filename)
+{
+  m_filename = filename;
+}
