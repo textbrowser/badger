@@ -25,6 +25,13 @@
 ** BADGER, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#include <QtDebug>
+
+extern "C"
+{
+#include <pwd.h>
+}
+
 #include "badger.h"
 
 badger::badger(QWidget *parent):QDialog(parent)
@@ -33,4 +40,31 @@ badger::badger(QWidget *parent):QDialog(parent)
 
 badger::~badger()
 {
+}
+
+QStringList badger::accounts(void) const
+{
+  setpwent();
+
+  char buffer[4096]; // Why sysconf()?
+  struct passwd *pwp = nullptr;
+  struct passwd pw;
+  QStringList list;
+
+  setpwent();
+
+  while(true)
+    {
+      if(getpwent_r(&pw, buffer, sizeof(buffer), &pwp))
+	break;
+      else if(!pwp || !pwp->pw_name || !pwp->pw_shell)
+	continue;
+      else if(QString(pwp->pw_shell).contains("nologin", Qt::CaseInsensitive))
+	continue;
+
+      if(pwp->pw_uid >= 1000)
+	list << pwp->pw_name;
+    }
+
+  return list;
 }

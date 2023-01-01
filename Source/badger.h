@@ -35,6 +35,9 @@ class badger: public QDialog
  public:
   badger(QWidget *parent);
   ~badger();
+
+ private:
+  QStringList accounts(void) const;
 };
 
 #endif
