@@ -41,9 +41,10 @@ OBJECTS_DIR = temp/obj
 RCC_DIR     = temp/rcc
 UI_DIR      = temp/ui
 
-FORMS          += UI/badger.ui
+FORMS          +=
 HEADERS	       += Source/badger.h
-SOURCES	       += Source/badger.cc
+SOURCES	       += Source/badger.cc \
+                  Source/badger_main.cc
 TRANSLATIONS    =
 
 PROJECTNAME	= nvidia-modeset
