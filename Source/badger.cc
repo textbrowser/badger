@@ -44,8 +44,6 @@ badger::~badger()
 
 QStringList badger::accounts(void) const
 {
-  setpwent();
-
   char buffer[4096]; // Why sysconf()?
   struct passwd *pwp = nullptr;
   struct passwd pw;
