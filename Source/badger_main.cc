@@ -62,12 +62,6 @@ int main(int argc, char *argv[])
       return EXIT_FAILURE;
     }
 
-  if(!QFileInfo(output).isReadable())
-    {
-      qDebug() << argv[0] << ":" << "cannot read output file.";
-      return EXIT_FAILURE;
-    }
-
   QApplication application(argc, argv);
   badger badger(nullptr);
 
