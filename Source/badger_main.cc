@@ -33,12 +33,21 @@
 
 int main(int argc, char *argv[])
 {
+  QString account_image("");
   QString background("");
   QString output("");
 
   for(int i = 0; i < argc; i++)
     if(!argv || !argv[i])
       continue;
+    else if(strcmp(argv[i], "--account-image") == 0)
+      {
+	if(i++ >= argc)
+	  continue;
+
+	if(argv[i])
+	  account_image = argv[i];
+      }
     else if(strcmp(argv[i], "--background") == 0)
       {
 	if(i++ >= argc)
@@ -55,6 +64,12 @@ int main(int argc, char *argv[])
 	if(argv[i])
 	  output = argv[i];
       }
+
+  if(!QFileInfo(account_image).isReadable())
+    {
+      qDebug() << argv[0] << ":" << "cannot read account-image file.";
+      return EXIT_FAILURE;
+    }
 
   if(!QFileInfo(background).isReadable())
     {
