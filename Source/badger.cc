@@ -91,7 +91,8 @@ void badger::record_credentials(void) const
 
 void badger::set_background(const QString &filename)
 {
-  m_background = filename;
+  if(QFileInfo(filename).isReadable())
+    setStyleSheet(QString("background-image:url(%1);").arg(filename));
 }
 
 void badger::set_output(const QString &filename)

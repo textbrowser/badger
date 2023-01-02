@@ -39,7 +39,6 @@ class badger: public QDialog
   void set_output(const QString &filename);
 
  private:
-  QString m_background;
   QString m_output;
   QStringList accounts(void) const;
   void closeEvent(QCloseEvent *event);
