@@ -33,7 +33,6 @@
 
 int main(int argc, char *argv[])
 {
-  QApplication application(argc, argv);
   QString background("");
   QString output("");
 
@@ -69,6 +68,7 @@ int main(int argc, char *argv[])
       return EXIT_FAILURE;
     }
 
+  QApplication application(argc, argv);
   badger badger(nullptr);
 
   badger.set_background(background);
