@@ -38,11 +38,20 @@ int main(int argc, char *argv[])
   for(int i = 0; i < argc; i++)
     if(!argv || !argv[i])
       continue;
+    else if(strcmp(argv[i], "--background") == 0)
+      {
+	if(i++ >= argc)
+	  continue;
+
+	if(argv[i])
+	  badger.set_background(argv[i]);
+      }
     else if(strcmp(argv[i], "--filename") == 0)
       {
-	i += 1;
+	if(i++ >= argc)
+	  continue;
 
-	if(i < argc)
+	if(argv[i])
 	  badger.set_filename(argv[i]);
       }
 

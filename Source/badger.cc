@@ -77,6 +77,11 @@ void badger::record_credentials(void) const
 {
 }
 
+void badger::set_background(const QString &filename)
+{
+  m_background = filename;
+}
+
 void badger::set_filename(const QString &filename)
 {
   m_filename = filename;
