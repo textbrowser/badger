@@ -55,6 +55,6 @@ int main(int argc, char *argv[])
 	  badger.set_filename(argv[i]);
       }
 
-  badger.exec();
+  badger.showFullScreen();
   return application.exec();
 }

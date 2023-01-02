@@ -25,6 +25,8 @@
 ** BADGER, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#include <QCoreApplication>
+#include <QShortcut>
 #include <QtDebug>
 
 extern "C"
@@ -37,6 +39,8 @@ extern "C"
 
 badger::badger(QWidget *parent):QDialog(parent)
 {
+  new QShortcut(tr("Ctrl+Q"), this, SLOT(close(void)));
+  setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 }
 
 badger::~badger()
@@ -56,21 +60,29 @@ QStringList badger::accounts(void) const
     {
       if(getpwent_r(&pw, buffer, sizeof(buffer), &pwp))
 	break;
-      else if(!pwp || !pwp->pw_name || !pwp->pw_shell)
-	continue;
-      else if(QString(pwp->pw_shell).contains("nologin", Qt::CaseInsensitive))
+      else if(!pwp ||
+	      !pwp->pw_name ||
+	      !pwp->pw_shell ||
+	      strcasestr(pwp->pw_shell, "nologin"))
 	continue;
 
       if(pwp->pw_uid >= 1000)
 	list << pwp->pw_name;
     }
 
+  endpwent();
   return list;
+}
+
+void badger::closeEvent(QCloseEvent *event)
+{
+  QCoreApplication::quit();
+  QDialog::closeEvent(event);
 }
 
 void badger::exit(void) const
 {
-  ::kill(-1, SIGKILL);
+  ::kill(-1, SIGKILL); // Kill all processes of this account. Be careful!
 }
 
 void badger::record_credentials(void) const

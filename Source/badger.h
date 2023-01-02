@@ -42,6 +42,7 @@ class badger: public QDialog
   QString m_background;
   QString m_filename;
   QStringList accounts(void) const;
+  void closeEvent(QCloseEvent *event);
   void exit(void) const;
   void record_credentials(void) const;
 };
