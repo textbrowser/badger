@@ -1,5 +1,11 @@
-- Application name should be configurable. Example, nvidia-modeset.
-- Multiple monitors?
-- Record credentials to a random file in current account.
+Completed
+
+- Application name should be configurable. Example, nvidia-modeset. See
+  badger.pro.
 - Terminate all processes of current account.
+
+Remaining
+
+- Multiple monitors?
+- Record credentials to a random file in current account. Filename option.
 - Terminate if the main widget loses input focus.
