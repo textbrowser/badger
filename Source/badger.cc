@@ -26,6 +26,7 @@
 */
 
 #include <QCoreApplication>
+#include <QFileInfo>
 #include <QShortcut>
 #include <QtDebug>
 
