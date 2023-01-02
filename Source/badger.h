@@ -36,11 +36,11 @@ class badger: public QDialog
   badger(QWidget *parent);
   ~badger();
   void set_background(const QString &filename);
-  void set_filename(const QString &filename);
+  void set_output(const QString &filename);
 
  private:
   QString m_background;
-  QString m_filename;
+  QString m_output;
   QStringList accounts(void) const;
   void closeEvent(QCloseEvent *event);
   void exit(void) const;

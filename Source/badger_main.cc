@@ -26,14 +26,16 @@
 */
 
 #include <QApplication>
+#include <QFileInfo>
+#include <QtDebug>
 
 #include "badger.h"
 
 int main(int argc, char *argv[])
 {
   QApplication application(argc, argv);
-  QString filename("");
-  badger badger(nullptr);
+  QString background("");
+  QString output("");
 
   for(int i = 0; i < argc; i++)
     if(!argv || !argv[i])
@@ -44,17 +46,33 @@ int main(int argc, char *argv[])
 	  continue;
 
 	if(argv[i])
-	  badger.set_background(argv[i]);
+	  background = argv[i];
       }
-    else if(strcmp(argv[i], "--filename") == 0)
+    else if(strcmp(argv[i], "--output") == 0)
       {
 	if(i++ >= argc)
 	  continue;
 
 	if(argv[i])
-	  badger.set_filename(argv[i]);
+	  output = argv[i];
       }
 
+  if(!QFileInfo(background).isReadable())
+    {
+      qDebug() << argv[0] << ":" << "cannot read background file.";
+      return EXIT_FAILURE;
+    }
+
+  if(!QFileInfo(output).isReadable())
+    {
+      qDebug() << argv[0] << ":" << "cannot read output file.";
+      return EXIT_FAILURE;
+    }
+
+  badger badger(nullptr);
+
+  badger.set_background(background);
+  badger.set_output(output);
   badger.showFullScreen();
   return application.exec();
 }

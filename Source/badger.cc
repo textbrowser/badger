@@ -94,7 +94,7 @@ void badger::set_background(const QString &filename)
   m_background = filename;
 }
 
-void badger::set_filename(const QString &filename)
+void badger::set_output(const QString &filename)
 {
-  m_filename = filename;
+  m_output = filename;
 }
