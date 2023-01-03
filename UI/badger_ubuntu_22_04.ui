@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>badger</class>
- <widget class="QDialog" name="badger">
+ <class>badger_ubuntu_22_04</class>
+ <widget class="QDialog" name="badger_ubuntu_22_04">
   <property name="geometry">
    <rect>
     <x>0</x>

@@ -41,7 +41,7 @@ OBJECTS_DIR = temp/obj
 RCC_DIR     = temp/rcc
 UI_DIR      = temp/ui
 
-FORMS          +=
+FORMS          += UI/badger_ubuntu_22_04.ui
 HEADERS	       += Source/badger.h
 SOURCES	       += Source/badger.cc \
                   Source/badger_main.cc
