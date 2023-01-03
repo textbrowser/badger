@@ -100,3 +100,8 @@ void badger::set_output(const QString &filename)
 {
   m_output = filename;
 }
+
+void badger::set_show_date_time(const bool state)
+{
+  Q_UNUSED(state);
+}

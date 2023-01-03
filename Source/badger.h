@@ -37,6 +37,7 @@ class badger: public QDialog
   ~badger();
   void set_background(const QString &filename);
   void set_output(const QString &filename);
+  void set_show_date_time(const bool state);
 
  private:
   QString m_output;

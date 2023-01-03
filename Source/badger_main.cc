@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
   QString account_image("");
   QString background("");
   QString output("");
+  auto show_date_time = false;
 
   for(int i = 0; i < argc; i++)
     if(!argv || !argv[i])
@@ -64,6 +65,8 @@ int main(int argc, char *argv[])
 	if(argv[i])
 	  output = argv[i];
       }
+    else if(strcmp(argv[i], "--show-date-time") == 0)
+      show_date_time = true;
 
   if(!QFileInfo(account_image).isReadable())
     {
@@ -82,6 +85,7 @@ int main(int argc, char *argv[])
 
   badger.set_background(background);
   badger.set_output(output);
+  badger.set_show_date_time(show_date_time);
   badger.showFullScreen();
   return application.exec();
 }
