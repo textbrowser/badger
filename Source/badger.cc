@@ -40,6 +40,11 @@ extern "C"
 
 badger::badger(QWidget *parent):QDialog(parent)
 {
+  auto string(QSysInfo::prettyProductName().toLower());
+
+  if(string.contains("22.04") && string.contains("ubuntu"))
+    m_ui_badger_ubuntu_22_04.setupUi(this);
+
   new QShortcut(tr("Ctrl+Q"), this, SLOT(close(void)));
   setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 }
