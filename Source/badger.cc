@@ -45,6 +45,10 @@ badger::badger(QWidget *parent):QDialog(parent)
   if(string.contains("22.04") && string.contains("ubuntu"))
     m_ui_badger_ubuntu_22_04.setupUi(this);
 
+  connect(&m_clock,
+	  &QTimer::timeout,
+	  this,
+	  &badger::slot_clock);
   new QShortcut(tr("Ctrl+Q"), this, SLOT(close(void)));
   setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 }
@@ -109,4 +113,8 @@ void badger::set_output(const QString &filename)
 void badger::set_show_date_time(const bool state)
 {
   Q_UNUSED(state);
+}
+
+void badger::slot_clock(void)
+{
 }

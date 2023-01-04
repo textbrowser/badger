@@ -28,6 +28,8 @@
 #ifndef badger_h
 #define badger_h
 
+#include <QTimer>
+
 #include "ui_badger_ubuntu_22_04.h"
 
 class badger: public QDialog
@@ -42,10 +44,14 @@ class badger: public QDialog
  private:
   QString m_output;
   QStringList accounts(void) const;
+  QTimer m_clock;
   Ui_badger_ubuntu_22_04 m_ui_badger_ubuntu_22_04;
   void closeEvent(QCloseEvent *event);
   void exit(void) const;
   void record_credentials(void) const;
+
+ private slots:
+  void slot_clock(void);
 };
 
 #endif
