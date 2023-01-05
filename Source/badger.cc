@@ -26,6 +26,7 @@
 */
 
 #include <QCoreApplication>
+#include <QKeyEvent>
 #include <QFileInfo>
 #include <QShortcut>
 #include <QtDebug>
@@ -97,6 +98,9 @@ void badger::exit(void) const
 
 void badger::keyPressEvent(QKeyEvent *event)
 {
+  if(event && event->key() == Qt::Key_Escape)
+    return;
+
   QDialog::keyPressEvent(event);
 }
 
