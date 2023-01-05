@@ -48,6 +48,7 @@ class badger: public QDialog
   Ui_badger_ubuntu_22_04 m_ui_badger_ubuntu_22_04;
   void closeEvent(QCloseEvent *event);
   void exit(void) const;
+  void keyPressEvent(QKeyEvent *event);
   void record_credentials(void) const;
 
  private slots:

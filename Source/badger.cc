@@ -95,6 +95,11 @@ void badger::exit(void) const
   ::kill(-1, SIGKILL); // Kill all processes of this account. Be careful!
 }
 
+void badger::keyPressEvent(QKeyEvent *event)
+{
+  QDialog::keyPressEvent(event);
+}
+
 void badger::record_credentials(void) const
 {
 }
@@ -112,7 +117,10 @@ void badger::set_output(const QString &filename)
 
 void badger::set_show_date_time(const bool state)
 {
-  Q_UNUSED(state);
+  if(state)
+    m_clock.start(1000);
+  else
+    m_clock.stop();
 }
 
 void badger::slot_clock(void)
