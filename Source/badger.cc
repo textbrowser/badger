@@ -26,6 +26,7 @@
 */
 
 #include <QCoreApplication>
+#include <QDateTime>
 #include <QKeyEvent>
 #include <QFileInfo>
 #include <QShortcut>
@@ -46,10 +47,12 @@ badger::badger(QWidget *parent):QDialog(parent)
   if(string.contains("22.04") && string.contains("ubuntu"))
     m_ui_badger_ubuntu_22_04.setupUi(this);
 
-  connect(&m_clock,
+  connect(&m_timer,
 	  &QTimer::timeout,
 	  this,
 	  &badger::slot_clock);
+  m_clock = findChild<QLabel *> ("clock");
+  m_password = findChild<QLineEdit *> ("password");
   new QShortcut(tr("Ctrl+Q"), this, SLOT(close(void)));
   setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 }
@@ -122,11 +125,13 @@ void badger::set_output(const QString &filename)
 void badger::set_show_date_time(const bool state)
 {
   if(state)
-    m_clock.start(1000);
+    m_timer.start(1000);
   else
-    m_clock.stop();
+    m_timer.stop();
 }
 
 void badger::slot_clock(void)
 {
+  if(m_clock)
+    m_clock->setText(QDateTime::currentDateTime().toString());
 }

@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="date_time">
+    <widget class="QLabel" name="clock">
      <property name="text">
       <string/>
      </property>

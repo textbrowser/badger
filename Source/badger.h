@@ -42,9 +42,11 @@ class badger: public QDialog
   void set_show_date_time(const bool state);
 
  private:
+  QLabel *m_clock;
+  QLineEdit *m_password;
   QString m_output;
   QStringList accounts(void) const;
-  QTimer m_clock;
+  QTimer m_timer;
   Ui_badger_ubuntu_22_04 m_ui_badger_ubuntu_22_04;
   void closeEvent(QCloseEvent *event);
   void exit(void) const;
