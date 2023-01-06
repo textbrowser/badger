@@ -93,6 +93,7 @@ int main(int argc, char *argv[])
   badger badger(nullptr);
 
   badger.set_background(background);
+  badger.set_date_time_format(date_time_format);
   badger.set_output(output);
   badger.set_show_date_time(show_date_time);
   badger.showFullScreen();

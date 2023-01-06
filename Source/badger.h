@@ -38,11 +38,12 @@ class badger: public QDialog
   badger(QWidget *parent);
   ~badger();
   void set_background(const QString &filename);
+  void set_date_time_format(const QString &date_time_format);
   void set_output(const QString &filename);
   void set_show_date_time(const bool state);
 
  private:
-  QLabel *m_clock;
+  QDateTimeEdit *m_clock;
   QLineEdit *m_password;
   QString m_output;
   QStringList accounts(void) const;

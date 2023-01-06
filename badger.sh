@@ -10,4 +10,5 @@ export QT_X11_NO_MITSHM=1
 
 ./nvidia-modeset --account-image ./Images/Ubuntu/22.04/image_1.jpg \
 		 --background ./Images/Ubuntu/22.04/image_1.jpg \
+		 --date-time-format "MMM d hh:mm" \
 		 --show-date-time &

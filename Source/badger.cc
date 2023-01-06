@@ -26,7 +26,7 @@
 */
 
 #include <QCoreApplication>
-#include <QDateTime>
+#include <QDateTimeEdit>
 #include <QKeyEvent>
 #include <QFileInfo>
 #include <QShortcut>
@@ -51,7 +51,8 @@ badger::badger(QWidget *parent):QDialog(parent)
 	  &QTimer::timeout,
 	  this,
 	  &badger::slot_clock);
-  m_clock = findChild<QLabel *> ("clock");
+  m_clock = findChild<QDateTimeEdit *> ("clock");
+  m_clock->clearFocus();
   m_password = findChild<QLineEdit *> ("password");
   new QShortcut(tr("Ctrl+Q"), this, SLOT(close(void)));
   setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
@@ -117,6 +118,12 @@ void badger::set_background(const QString &filename)
     setStyleSheet(QString("background-image:url(%1);").arg(filename));
 }
 
+void badger::set_date_time_format(const QString &date_time_format)
+{
+  if(m_clock)
+    m_clock->setDisplayFormat(date_time_format);
+}
+
 void badger::set_output(const QString &filename)
 {
   m_output = filename;
@@ -133,5 +140,5 @@ void badger::set_show_date_time(const bool state)
 void badger::slot_clock(void)
 {
   if(m_clock)
-    m_clock->setText(QDateTime::currentDateTime().toString());
+    m_clock->setDateTime(QDateTime::currentDateTime());
 }
