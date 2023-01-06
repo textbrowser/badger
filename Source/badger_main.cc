@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
 {
   QString account_image("");
   QString background("");
+  QString date_time_format("");
   QString output("");
   auto show_date_time = false;
 
@@ -56,6 +57,14 @@ int main(int argc, char *argv[])
 
 	if(argv[i])
 	  background = argv[i];
+      }
+    else if(strcmp(argv[i], "--date-time-format") == 0)
+      {
+	if(i++ >= argc)
+	  continue;
+
+	if(argv[i])
+	  date_time_format = argv[i];
       }
     else if(strcmp(argv[i], "--output") == 0)
       {
