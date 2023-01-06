@@ -43,12 +43,13 @@ class badger: public QDialog
   void set_show_date_time(const bool state);
 
  private:
-  QDateTimeEdit *m_clock;
   QLineEdit *m_password;
+  QString m_date_time_format;
   QString m_output;
-  QStringList accounts(void) const;
   QTimer m_timer;
+  QToolButton *m_clock;
   Ui_badger_ubuntu_22_04 m_ui_badger_ubuntu_22_04;
+  QStringList accounts(void) const;
   void closeEvent(QCloseEvent *event);
   void exit(void) const;
   void keyPressEvent(QKeyEvent *event);

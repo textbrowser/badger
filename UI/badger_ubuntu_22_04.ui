@@ -30,24 +30,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QDateTimeEdit" name="clock">
-       <property name="styleSheet">
-        <string notr="true">QWidget {background: transparent; color: white;}</string>
-       </property>
-       <property name="frame">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="readOnly">
+      <widget class="QToolButton" name="clock">
+       <property name="autoRaise">
         <bool>true</bool>
-       </property>
-       <property name="buttonSymbols">
-        <enum>QAbstractSpinBox::NoButtons</enum>
-       </property>
-       <property name="keyboardTracking">
-        <bool>false</bool>
        </property>
       </widget>
      </item>
