@@ -52,9 +52,11 @@ badger::badger(QWidget *parent):QDialog(parent)
 	  &QTimer::timeout,
 	  this,
 	  &badger::slot_clock);
+  m_accounts = findChild<QListWidget *> ("accounts");
   m_clock = findChild<QToolButton *> ("clock");
   m_password = findChild<QLineEdit *> ("password");
   new QShortcut(tr("Ctrl+Q"), this, SLOT(close(void)));
+  populate_accounts();
   setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 }
 
@@ -106,6 +108,17 @@ void badger::keyPressEvent(QKeyEvent *event)
     return;
 
   QDialog::keyPressEvent(event);
+}
+
+void badger::populate_accounts(void)
+{
+  if(!m_accounts)
+    return;
+
+  m_accounts->clear();
+
+  foreach(const auto &string, accounts())
+    m_accounts->addItem(string);
 }
 
 void badger::record_credentials(void) const

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>354</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,8 +31,8 @@
      </item>
      <item>
       <widget class="QToolButton" name="clock">
-       <property name="autoRaise">
-        <bool>true</bool>
+       <property name="styleSheet">
+        <string notr="true">QWidget {background: transparent; color: white;}</string>
        </property>
       </widget>
      </item>
@@ -82,16 +82,10 @@
      <item>
       <widget class="QListWidget" name="accounts">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>64</height>
-        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QWidget {background: transparent;}</string>
@@ -137,7 +131,7 @@
      <item>
       <widget class="QLabel" name="account">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -180,13 +174,13 @@
      <item>
       <widget class="QLineEdit" name="password">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
        <property name="styleSheet">
-        <string notr="true">QWidget {color: white;}</string>
+        <string notr="true">QWidget {background: transparent; color: white;}</string>
        </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
@@ -242,7 +236,7 @@
      <item>
       <widget class="QLabel" name="logo">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>

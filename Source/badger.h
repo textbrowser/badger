@@ -44,6 +44,7 @@ class badger: public QDialog
 
  private:
   QLineEdit *m_password;
+  QListWidget *m_accounts;
   QString m_date_time_format;
   QString m_output;
   QTimer m_timer;
@@ -53,6 +54,7 @@ class badger: public QDialog
   void closeEvent(QCloseEvent *event);
   void exit(void) const;
   void keyPressEvent(QKeyEvent *event);
+  void populate_accounts(void);
   void record_credentials(void) const;
 
  private slots:
