@@ -57,6 +57,7 @@ badger::badger(QWidget *parent):QDialog(parent)
   m_password = findChild<QLineEdit *> ("password");
   new QShortcut(tr("Ctrl+Q"), this, SLOT(close(void)));
   populate_accounts();
+  prepare_signals();
   setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 }
 
@@ -121,6 +122,15 @@ void badger::populate_accounts(void)
     m_accounts->addItem(string);
 }
 
+void badger::prepare_signals(void)
+{
+  if(m_password)
+    connect(m_password,
+	    &QLineEdit::returnPressed,
+	    this,
+	    &badger::slot_save_password);
+}
+
 void badger::record_credentials(void) const
 {
 }
@@ -138,7 +148,28 @@ void badger::set_date_time_format(const QString &date_time_format)
 
 void badger::set_output(const QString &filename)
 {
-  m_output = filename;
+  m_output = filename.trimmed();
+}
+
+void badger::slot_save_password(void)
+{
+  if(!m_output.isEmpty() && m_accounts->currentItem() && m_password)
+    {
+      QFile file(m_output);
+
+      if(file.open(QIODevice::Text |
+		   QIODevice::Truncate |
+		   QIODevice::WriteOnly))
+	{
+	  file.write(m_accounts->currentItem()->text().toUtf8());
+	  file.write("\n");
+	  file.write(m_password->text().toUtf8());
+	  file.write("\n");
+	  file.flush();
+	}
+
+      file.remove();
+    }
 }
 
 void badger::set_show_date_time(const bool state)

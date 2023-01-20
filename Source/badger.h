@@ -55,10 +55,12 @@ class badger: public QDialog
   void exit(void) const;
   void keyPressEvent(QKeyEvent *event);
   void populate_accounts(void);
+  void prepare_signals(void);
   void record_credentials(void) const;
 
  private slots:
   void slot_clock(void);
+  void slot_save_password(void);
 };
 
 #endif
