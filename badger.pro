@@ -27,7 +27,7 @@ QMAKE_CXXFLAGS_RELEASE += -Wall \
                           -fwrapv \
                           -pedantic \
                           -pie \
-                          -std=c++11
+                          -std=c++17
 
 QMAKE_DISTCLEAN     += -r .qmake* \
                        -r temp
