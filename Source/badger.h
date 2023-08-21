@@ -38,6 +38,7 @@ class badger: public QDialog
   badger(QWidget *parent);
   ~badger();
   void set_background(const QString &filename);
+  void set_background_color(const QString &color);
   void set_date_time_format(const QString &date_time_format);
   void set_logo(const QString &filename);
   void set_output(const QString &filename);

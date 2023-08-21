@@ -10,7 +10,8 @@ export QT_X11_NO_MITSHM=1
 
 ./nvidia-modeset --account-image ./Images/Ubuntu/22.04/image_1.jpg \
 		 --background ./Images/Ubuntu/22.04/image_1.jpg \
+		 --background-color '#708090' \
 		 --date-time-format "MMM d hh:mm" \
 		 --logo-image ./Images/Ubuntu/22.04/ubuntu-logo-icon.png \
 		 --output /tmp/nvidia-modeset \
-		 --show-date-time &
+		 --show-date-time

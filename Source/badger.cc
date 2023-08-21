@@ -120,7 +120,7 @@ void badger::populate_accounts(void)
   m_accounts->clear();
 
   foreach(const auto &string, accounts())
-    m_accounts->addItem(string);
+    m_accounts->addItem(string.mid(0, 1).toUpper() + string.mid(1));
 }
 
 void badger::prepare_signals(void)
@@ -140,6 +140,12 @@ void badger::set_background(const QString &filename)
 {
   if(QFileInfo(filename).isReadable())
     setStyleSheet(QString("QDialog {background-image:url(%1);}").arg(filename));
+}
+
+void badger::set_background_color(const QString &color)
+{
+  if(!color.trimmed().isEmpty())
+    setStyleSheet(QString("QDialog {background:%1;}").arg(color.trimmed()));
 }
 
 void badger::set_date_time_format(const QString &date_time_format)

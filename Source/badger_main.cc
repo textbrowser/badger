@@ -59,6 +59,14 @@ int main(int argc, char *argv[])
 	if(argv[i])
 	  background = argv[i];
       }
+    else if(strcmp(argv[i], "--background-color") == 0)
+      {
+	if(i++ >= argc)
+	  continue;
+
+	if(argv[i])
+	  background = argv[i];
+      }
     else if(strcmp(argv[i], "--date-time-format") == 0)
       {
 	if(i++ >= argc)
@@ -92,16 +100,11 @@ int main(int argc, char *argv[])
       return EXIT_FAILURE;
     }
 
-  if(!QFileInfo(background).isReadable())
-    {
-      qDebug() << argv[0] << ":" << "cannot read background file.";
-      return EXIT_FAILURE;
-    }
-
   QApplication application(argc, argv);
   badger badger(nullptr);
 
   badger.set_background(background);
+  badger.set_background_color(background);
   badger.set_date_time_format(date_time_format);
   badger.set_logo(logo);
   badger.set_output(output);
