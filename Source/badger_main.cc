@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
   QString account_image("");
   QString background("");
   QString date_time_format("");
+  QString logo("");
   QString output("");
   auto show_date_time = false;
 
@@ -66,6 +67,14 @@ int main(int argc, char *argv[])
 	if(argv[i])
 	  date_time_format = argv[i];
       }
+    else if(strcmp(argv[i], "--logo-image") == 0)
+      {
+	if(i++ >= argc)
+	  continue;
+
+	if(argv[i])
+	  logo = argv[i];
+      }
     else if(strcmp(argv[i], "--output") == 0)
       {
 	if(i++ >= argc)
@@ -94,6 +103,7 @@ int main(int argc, char *argv[])
 
   badger.set_background(background);
   badger.set_date_time_format(date_time_format);
+  badger.set_logo(logo);
   badger.set_output(output);
   badger.set_show_date_time(show_date_time);
   badger.showFullScreen();

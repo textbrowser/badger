@@ -54,6 +54,7 @@ badger::badger(QWidget *parent):QDialog(parent)
 	  &badger::slot_clock);
   m_accounts = findChild<QListWidget *> ("accounts");
   m_clock = findChild<QToolButton *> ("clock");
+  m_logo = findChild<QLabel *> ("logo");
   m_password = findChild<QLineEdit *> ("password");
   new QShortcut(tr("Ctrl+Q"), this, SLOT(close(void)));
   populate_accounts();
@@ -138,12 +139,18 @@ void badger::record_credentials(void) const
 void badger::set_background(const QString &filename)
 {
   if(QFileInfo(filename).isReadable())
-    setStyleSheet(QString("background-image:url(%1);").arg(filename));
+    setStyleSheet(QString("QDialog {background-image:url(%1);}").arg(filename));
 }
 
 void badger::set_date_time_format(const QString &date_time_format)
 {
   m_date_time_format = date_time_format;
+}
+
+void badger::set_logo(const QString &filename)
+{
+  if(QFileInfo(filename).isReadable() && m_logo)
+    m_logo->setPixmap(filename);
 }
 
 void badger::set_output(const QString &filename)
