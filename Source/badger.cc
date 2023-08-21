@@ -25,6 +25,7 @@
 ** BADGER, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#include <QCalendarWidget>
 #include <QCoreApplication>
 #include <QDateTime>
 #include <QFileInfo>
@@ -60,6 +61,7 @@ badger::badger(QWidget *parent):QDialog(parent)
   populate_accounts();
   prepare_signals();
   setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+  slot_clock();
 }
 
 badger::~badger()
@@ -121,6 +123,8 @@ void badger::populate_accounts(void)
 
   foreach(const auto &string, accounts())
     m_accounts->addItem(string.mid(0, 1).toUpper() + string.mid(1));
+
+  m_accounts->setCurrentRow(0);
 }
 
 void badger::prepare_signals(void)
@@ -196,5 +200,35 @@ void badger::set_show_date_time(const bool state)
 void badger::slot_clock(void)
 {
   if(m_clock)
-    m_clock->setText(QDateTime::currentDateTime().toString(m_date_time_format));
+    {
+      connect(m_clock,
+	      &QToolButton::pressed,
+	      this,
+	      &badger::slot_clock_pressed,
+	      Qt::UniqueConnection);
+      m_clock->setText
+	(QDateTime::currentDateTime().toString(m_date_time_format));
+    }
+  else
+    m_timer.stop();
+}
+
+void badger::slot_clock_pressed(void)
+{
+  if(!m_clock)
+    return;
+
+  auto calendar = findChild<QCalendarWidget *> ();
+
+  if(!calendar)
+    calendar = new QCalendarWidget(this);
+
+  calendar->resize(calendar->sizeHint());
+
+  auto position(rect().center());
+
+  position.setX(position.x() - calendar->size().width() / 2);
+  position.setY(25 + m_clock->rect().bottom());
+  calendar->move(mapToParent(position));
+  calendar->show();
 }

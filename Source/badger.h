@@ -63,6 +63,7 @@ class badger: public QDialog
 
  private slots:
   void slot_clock(void);
+  void slot_clock_pressed(void);
   void slot_save_password(void);
 };
 
