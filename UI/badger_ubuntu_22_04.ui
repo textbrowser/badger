@@ -32,7 +32,7 @@
      <item>
       <widget class="QToolButton" name="clock">
        <property name="styleSheet">
-        <string notr="true">QWidget {background: transparent; color: white;}</string>
+        <string notr="true">QWidget {background: transparent; border: 0px; color: white;}</string>
        </property>
       </widget>
      </item>

@@ -25,7 +25,6 @@
 ** BADGER, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <QCalendarWidget>
 #include <QCoreApplication>
 #include <QDateTime>
 #include <QFileInfo>
@@ -41,6 +40,7 @@ extern "C"
 }
 
 #include "badger.h"
+#include "badger_calendar_widget.h"
 
 badger::badger(QWidget *parent):QDialog(parent)
 {
@@ -218,10 +218,10 @@ void badger::slot_clock_pressed(void)
   if(!m_clock)
     return;
 
-  auto calendar = findChild<QCalendarWidget *> ();
+  auto calendar = findChild<badger_calendar_widget *> ();
 
   if(!calendar)
-    calendar = new QCalendarWidget(this);
+    calendar = new badger_calendar_widget(this);
 
   calendar->resize(calendar->sizeHint());
 

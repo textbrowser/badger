@@ -42,7 +42,7 @@ RCC_DIR     = temp/rcc
 UI_DIR      = temp/ui
 
 FORMS          += UI/badger_ubuntu_22_04.ui
-HEADERS	       += Source/badger.h
+HEADERS	       += Source/badger.h Source/badger_calendar_widget.h
 SOURCES	       += Source/badger.cc \
                   Source/badger_main.cc
 TRANSLATIONS    =
