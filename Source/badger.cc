@@ -222,6 +222,11 @@ void badger::slot_clock_pressed(void)
 
   if(!calendar)
     calendar = new badger_calendar_widget(this);
+  else if(calendar->isVisible())
+    {
+      calendar->close();
+      return;
+    }
 
   calendar->resize(calendar->sizeHint());
 
