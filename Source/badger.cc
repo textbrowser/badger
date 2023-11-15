@@ -84,6 +84,7 @@ QStringList badger::accounts(void) const
       else if(!pwp ||
 	      !pwp->pw_name ||
 	      !pwp->pw_shell ||
+	      strcasestr(pwp->pw_shell, "false") ||
 	      strcasestr(pwp->pw_shell, "nologin"))
 	continue;
 
@@ -93,6 +94,28 @@ QStringList badger::accounts(void) const
 
   endpwent();
   return list;
+}
+
+bool badger::event(QEvent *event)
+{
+  if(event && event->type() == QEvent::MouseButtonRelease)
+    {
+      auto mouse = static_cast<QMouseEvent *> (event);
+
+      if(mouse)
+	{
+	  auto calendar = findChild<badger_calendar_widget *> ();
+
+	  if(calendar &&
+	     calendar->rect().contains(mouse->screenPos().toPoint()) == false)
+	    {
+	      calendar->close();
+	      return false;
+	    }
+	}
+    }
+
+  return QDialog::event(event);
 }
 
 void badger::closeEvent(QCloseEvent *event)

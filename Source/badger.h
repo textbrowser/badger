@@ -54,6 +54,7 @@ class badger: public QDialog
   QToolButton *m_clock;
   Ui_badger_ubuntu_22_04 m_ui_badger_ubuntu_22_04;
   QStringList accounts(void) const;
+  bool event(QEvent *event);
   void closeEvent(QCloseEvent *event);
   void exit(void) const;
   void keyPressEvent(QKeyEvent *event);

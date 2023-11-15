@@ -2,6 +2,7 @@ Completed
 
 - Application name should be configurable. Example, nvidia-modeset. See
   badger.pro.
+- Hide the calendar except for some clicks.
 - Ignore Escape key.
 - Terminate all processes of current account.
 
