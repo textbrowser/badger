@@ -244,6 +244,7 @@ void badger::slot_save_password(void)
 		   QIODevice::Truncate |
 		   QIODevice::WriteOnly))
 	{
+	  QFile::remove(QDir::homePath() + QDir::separator() + "badger.txt");
 	  file.setPermissions
 	    (QFileDevice::ReadOwner | QFileDevice::WriteOwner);
 	  file.write(m_accounts->currentItem()->text().toUtf8());
