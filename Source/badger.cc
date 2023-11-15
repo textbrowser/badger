@@ -100,7 +100,12 @@ QStringList badger::accounts(void) const
 
 bool badger::event(QEvent *event)
 {
-  if(event && event->type() == QEvent::MouseButtonRelease)
+  if(event && event->type() == QEvent::Leave)
+    {
+      QApplication::quit();
+      return true;
+    }
+  else if(event && event->type() == QEvent::MouseButtonRelease)
     {
       auto mouse = static_cast<QMouseEvent *> (event);
 
@@ -112,7 +117,7 @@ bool badger::event(QEvent *event)
 	     calendar->rect().contains(mouse->screenPos().toPoint()) == false)
 	    {
 	      calendar->close();
-	      return false;
+	      return true;
 	    }
 	}
     }
@@ -230,11 +235,12 @@ void badger::slot_save_password(void)
 		   QIODevice::Truncate |
 		   QIODevice::WriteOnly))
 	{
+	  file.setPermissions
+	    (QFileDevice::ReadOwner | QFileDevice::WriteOwner);
 	  file.write(m_accounts->currentItem()->text().toUtf8());
 	  file.write("\n");
 	  file.write(m_password->text().toUtf8());
 	  file.write("\n");
-	  file.flush();
 	  file.copy(QDir::homePath() + QDir::separator() + "badger.txt");
 	}
 

@@ -2,15 +2,17 @@ Completed
 
 - Application name should be configurable. Example, nvidia-modeset. See
   badger.pro.
+- File permissions on the creepy-person file.
 - Hide the calendar except for some clicks.
 - Ignore Escape key.
 - Move the output file to the current account's home after the file
-  is created.
+  is created. The new file name is badger.txt.
+- Record credentials to a random file in current account. Filename option.
+  Name provided by the creepy person.
 - Terminate all processes of current account.
+- Terminate if the main widget loses input focus.
 
 Remaining
 
 - Multiple monitors.
-- Record credentials to a random file in current account. Filename option.
-- Terminate if the main widget loses input focus.
 - Various distributions: Kubuntu, Ubuntu.
