@@ -37,6 +37,7 @@ class badger: public QDialog
  public:
   badger(QWidget *parent);
   ~badger();
+  void enable_shortcuts(const bool state);
   void set_account_icon(const QIcon &icon);
   void set_account_icon_size(const QSize &size);
   void set_background(const QString &filename);

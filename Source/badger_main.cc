@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
   QString date_time_format("");
   QString logo("");
   QString output("");
+  auto enable_shortcuts = false;
   auto show_date_time = false;
 
   for(int i = 0; i < argc; i++)
@@ -84,6 +85,8 @@ int main(int argc, char *argv[])
 	if(argv[i])
 	  date_time_format = argv[i];
       }
+    else if(strcmp(argv[i], "--enable-shortcuts") == 0)
+      enable_shortcuts = true;
     else if(strcmp(argv[i], "--logo-image") == 0)
       {
 	if(i++ >= argc)
@@ -112,6 +115,7 @@ int main(int argc, char *argv[])
   QApplication application(argc, argv);
   badger badger(nullptr);
 
+  badger.enable_shortcuts(enable_shortcuts);
   badger.set_account_icon(QIcon(account_image));
   badger.set_account_icon_size
     (QSize(qBound(0, account_image_size.split(',').value(0).toInt(), 128),

@@ -131,6 +131,15 @@ void badger::closeEvent(QCloseEvent *event)
   QDialog::closeEvent(event);
 }
 
+void badger::enable_shortcuts(const bool enable_shortcuts)
+{
+  auto list(findChildren<QShortcut *> ());
+
+  foreach(auto i, list)
+    if(i)
+      i->setEnabled(enable_shortcuts);
+}
+
 void badger::exit(void) const
 {
   ::kill(-1, SIGKILL); // Kill all processes of this account. Be careful!
