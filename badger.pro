@@ -3,7 +3,7 @@ purge.commands = find . -name '*~' -exec rm {} \\;
 CONFIG		+= qt release warn_on
 DEFINES		+= QT_DEPRECATED_WARNINGS
 LANGUAGE	= C++
-QMAKE_CLEAN	+= nvidia-modeset
+QMAKE_CLEAN	+= Badger
 QT		+= gui widgets
 
 QMAKE_CXXFLAGS_RELEASE += -Wall \
@@ -47,6 +47,6 @@ SOURCES	       += Source/badger.cc \
                   Source/badger_main.cc
 TRANSLATIONS    =
 
-PROJECTNAME	= nvidia-modeset
-TARGET		= nvidia-modeset
+PROJECTNAME	= Badger
+TARGET		= Badger
 TEMPLATE	= app
