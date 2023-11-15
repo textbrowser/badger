@@ -37,17 +37,22 @@ class badger: public QDialog
  public:
   badger(QWidget *parent);
   ~badger();
+  void set_account_icon(const QIcon &icon);
+  void set_account_icon_size(const QSize &size);
   void set_background(const QString &filename);
   void set_background_color(const QString &color);
   void set_date_time_format(const QString &date_time_format);
   void set_logo(const QString &filename);
   void set_output(const QString &filename);
   void set_show_date_time(const bool state);
+  void showFullScreen(void);
 
  private:
+  QIcon m_account_icon;
   QLabel *m_logo;
   QLineEdit *m_password;
   QListWidget *m_accounts;
+  QSize m_account_icon_size;
   QString m_date_time_format;
   QString m_output;
   QTimer m_timer;

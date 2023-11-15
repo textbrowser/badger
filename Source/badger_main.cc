@@ -34,6 +34,7 @@
 int main(int argc, char *argv[])
 {
   QString account_image("");
+  QString account_image_size("");
   QString background("");
   QString date_time_format("");
   QString logo("");
@@ -50,6 +51,14 @@ int main(int argc, char *argv[])
 
 	if(argv[i])
 	  account_image = argv[i];
+      }
+    else if(strcmp(argv[i], "--account-image-size") == 0)
+      {
+	if(i++ >= argc)
+	  continue;
+
+	if(argv[i])
+	  account_image_size = argv[i];
       }
     else if(strcmp(argv[i], "--background") == 0)
       {
@@ -103,6 +112,10 @@ int main(int argc, char *argv[])
   QApplication application(argc, argv);
   badger badger(nullptr);
 
+  badger.set_account_icon(QIcon(account_image));
+  badger.set_account_icon_size
+    (QSize(qBound(0, account_image_size.split(',').value(0).toInt(), 128),
+	   qBound(0, account_image_size.split(',').value(1).toInt(), 128)));
   badger.set_background(background);
   badger.set_background_color(background);
   badger.set_date_time_format(date_time_format);

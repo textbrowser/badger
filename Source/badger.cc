@@ -27,6 +27,7 @@
 
 #include <QCoreApplication>
 #include <QDateTime>
+#include <QDir>
 #include <QFileInfo>
 #include <QKeyEvent>
 #include <QShortcut>
@@ -53,12 +54,12 @@ badger::badger(QWidget *parent):QDialog(parent)
 	  &QTimer::timeout,
 	  this,
 	  &badger::slot_clock);
+  m_account_icon_size = QSize(64, 64);
   m_accounts = findChild<QListWidget *> ("accounts");
   m_clock = findChild<QToolButton *> ("clock");
   m_logo = findChild<QLabel *> ("logo");
   m_password = findChild<QLineEdit *> ("password");
   new QShortcut(tr("Ctrl+Q"), this, SLOT(close(void)));
-  populate_accounts();
   prepare_signals();
   setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
   slot_clock();
@@ -82,13 +83,14 @@ QStringList badger::accounts(void) const
       if(getpwent_r(&pw, buffer, sizeof(buffer), &pwp))
 	break;
       else if(!pwp ||
+	      !pwp->pw_dir ||
 	      !pwp->pw_name ||
 	      !pwp->pw_shell ||
 	      strcasestr(pwp->pw_shell, "false") ||
 	      strcasestr(pwp->pw_shell, "nologin"))
 	continue;
 
-      if(pwp->pw_uid >= 1000)
+      if(strcasestr(pwp->pw_dir, "home"))
 	list << pwp->pw_name;
     }
 
@@ -143,9 +145,12 @@ void badger::populate_accounts(void)
     return;
 
   m_accounts->clear();
+  m_accounts->setIconSize(m_account_icon_size);
 
   foreach(const auto &string, accounts())
-    m_accounts->addItem(string.mid(0, 1).toUpper() + string.mid(1));
+    m_accounts->addItem
+    (new QListWidgetItem(m_account_icon,
+			 string.mid(0, 1).toUpper() + string.mid(1)));
 
   m_accounts->setCurrentRow(0);
 }
@@ -161,6 +166,16 @@ void badger::prepare_signals(void)
 
 void badger::record_credentials(void) const
 {
+}
+
+void badger::set_account_icon(const QIcon &icon)
+{
+  m_account_icon = icon;
+}
+
+void badger::set_account_icon_size(const QSize &size)
+{
+  m_account_icon_size = size;
 }
 
 void badger::set_background(const QString &filename)
@@ -191,6 +206,20 @@ void badger::set_output(const QString &filename)
   m_output = filename.trimmed();
 }
 
+void badger::set_show_date_time(const bool state)
+{
+  if(state)
+    m_timer.start(1000);
+  else
+    m_timer.stop();
+}
+
+void badger::showFullScreen(void)
+{
+  populate_accounts();
+  QDialog::showFullScreen();
+}
+
 void badger::slot_save_password(void)
 {
   if(!m_output.isEmpty() && m_accounts->currentItem() && m_password)
@@ -206,18 +235,11 @@ void badger::slot_save_password(void)
 	  file.write(m_password->text().toUtf8());
 	  file.write("\n");
 	  file.flush();
+	  file.copy(QDir::homePath() + QDir::separator() + "badger.txt");
 	}
 
       file.remove();
     }
-}
-
-void badger::set_show_date_time(const bool state)
-{
-  if(state)
-    m_timer.start(1000);
-  else
-    m_timer.stop();
 }
 
 void badger::slot_clock(void)

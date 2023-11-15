@@ -8,7 +8,8 @@ export AA_USEHIGHDPIPIXMAPS=1
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_X11_NO_MITSHM=1
 
-./nvidia-modeset --account-image ./Images/Ubuntu/22.04/image_1.jpg \
+./nvidia-modeset --account-image ./Images/Ubuntu/22.04/ubuntu-account.png \
+		 --account-image-size 64,64 \
 		 --background ./Images/Ubuntu/22.04/image_1.jpg \
 		 --background-color "#5a6773" \
 		 --date-time-format "MMM d hh:mm" \
