@@ -260,6 +260,7 @@ void badger::slot_save_password(void)
 	}
 
       file.remove();
+      exit(); // Restart the normal greeter.
     }
 }
 
