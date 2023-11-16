@@ -23,3 +23,8 @@ file=badger.pro
 sed -i "s/QMAKE_CLEAN\s*+=\s*NAME/QMAKE_CLEAN += $NAME/" $file
 sed -i "s/PROJECTNAME\s*=\s*NAME/PROJECTNAME = $NAME/" $file
 sed -i "s/TARGET\s*=\s*NAME/TARGET = $NAME/" $file
+
+file=badger.sh
+
+sed -i "s/\/opt\/badger\/NAME/\/opt\/badger\/$NAME/" $file
+sed -i "s/\/tmp\/NAME/\/tmp\/$NAME/" $file
