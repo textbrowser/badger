@@ -4,3 +4,5 @@ An artificial login for recording credentials.
 2. Distributions/build_debian_amd64.bash.
 3. Distribute.
 4. Record!
+
+Qt 5.15 LTS and perhaps Qt 6.5 LTS.

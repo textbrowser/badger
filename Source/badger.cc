@@ -114,7 +114,12 @@ bool badger::event(QEvent *event)
 	  auto calendar = findChild<badger_calendar_widget *> ();
 
 	  if(calendar &&
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 	     calendar->rect().contains(mouse->screenPos().toPoint()) == false)
+#else
+	     calendar->rect().contains(mouse->globalPosition().toPoint()) ==
+	       false)
+#endif
 	    {
 	      calendar->close();
 	      return true;
