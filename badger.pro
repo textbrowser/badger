@@ -3,7 +3,7 @@ purge.commands = find . -name '*~' -exec rm {} \\;
 CONFIG		+= qt release warn_on
 DEFINES		+= QT_DEPRECATED_WARNINGS
 LANGUAGE	= C++
-QMAKE_CLEAN += badger
+QMAKE_CLEAN     += NAME
 QT		+= gui widgets
 
 QMAKE_CXXFLAGS_RELEASE += -Wall \
@@ -47,6 +47,6 @@ SOURCES	       += Source/badger.cc \
                   Source/badger_main.cc
 TRANSLATIONS    =
 
-PROJECTNAME = badger
-TARGET = badger
+PROJECTNAME     = NAME
+TARGET          = NAME
 TEMPLATE	= app

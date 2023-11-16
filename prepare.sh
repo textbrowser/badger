@@ -15,10 +15,11 @@ done
 
 for file in Distributions/build*; do
     sed -i "s/$NAME-.*_/$NAME-$VERSION\_/" $file
+    sed -i "s/.\/NAME/.\/$NAME/" $file
 done
 
 file=badger.pro
 
-sed -i "s/QMAKE_CLEAN\s*+=\s*Badger/QMAKE_CLEAN += $NAME/" $file
-sed -i "s/PROJECTNAME\s*=\s*Badger/PROJECTNAME = $NAME/" $file
-sed -i "s/TARGET\s*=\s*Badger/TARGET = $NAME/" $file
+sed -i "s/QMAKE_CLEAN\s*+=\s*NAME/QMAKE_CLEAN += $NAME/" $file
+sed -i "s/PROJECTNAME\s*=\s*NAME/PROJECTNAME = $NAME/" $file
+sed -i "s/TARGET\s*=\s*NAME/TARGET = $NAME/" $file

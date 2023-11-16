@@ -23,7 +23,7 @@ mkdir -p ./opt/badger
 qmake -o Makefile
 lupdate badger.pro 2>/dev/null && lrelease badger.pro 2>/dev/null
 make -j $(nproc)
-cp -p ./Badger ./opt/badger/.
+cp -p ./NAME ./opt/badger/.
 cp -p ./badger.sh ./opt/badger/.
 cp -pr ./Images ./opt/badger/.
 
