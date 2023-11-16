@@ -102,7 +102,7 @@ bool badger::event(QEvent *event)
 {
   if(event && event->type() == QEvent::Leave)
     {
-      QApplication::quit();
+      exit();
       return true;
     }
   else if(event && event->type() == QEvent::MouseButtonRelease)
