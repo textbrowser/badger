@@ -21,7 +21,7 @@ fi
 make distclean 2>/dev/null
 mkdir -p ./opt/badger
 qmake -o Makefile
-lupdate badger.pro && lrelease badger.pro
+lupdate badger.pro 2>/dev/null && lrelease badger.pro 2>/dev/null
 make -j $(nproc)
 cp -p ./Badger ./opt/badger/.
 cp -p ./badger.sh ./opt/badger/.
@@ -29,10 +29,10 @@ cp -pr ./Images ./opt/badger/.
 
 # Preparing Badger-x.deb:
 
-mkdir -p badger-debian/opt
-cp -pr ./Distributions/DEBIAN badger-debian/.
-cp -r ./opt/badger badger-debian/opt/.
-fakeroot dpkg-deb --build badger-debian Badger-2023.11.15_amd64.deb
+mkdir -p debian/opt
+cp -pr ./Distributions/DEBIAN debian/.
+cp -r ./opt/badger debian/opt/.
+fakeroot dpkg-deb --build debian badger-2023.11.15_amd64.deb
 make distclean
 rm -fr ./opt
-rm -fr badger-debian
+rm -fr debian
