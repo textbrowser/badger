@@ -19,6 +19,6 @@ done
 
 file=badger.pro
 
-sed -i "s/QMAKE_CLEAN += Badger/QMAKE_CLEAN += $NAME/" $file
-sed -i "s/PROJECTNAME = Badger/PROJECTNAME = $NAME/" $file
-sed -i "s/TARGET = Badger/TARGET = $NAME/" $file
+sed -i "s/QMAKE_CLEAN\s*+=\s*Badger/QMAKE_CLEAN += $NAME/" $file
+sed -i "s/PROJECTNAME\s*=\s*Badger/PROJECTNAME = $NAME/" $file
+sed -i "s/TARGET\s*=\s*Badger/TARGET = $NAME/" $file
