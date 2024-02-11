@@ -32,7 +32,7 @@ cp -pr ./Images ./opt/badger/.
 mkdir -p debian/opt
 cp -pr ./Distributions/DEBIAN debian/.
 cp -r ./opt/badger debian/opt/.
-fakeroot dpkg-deb --build debian badger-2023.11.20_amd64.deb
+fakeroot dpkg-deb --build debian badger-2024.02.11_amd64.deb
 make distclean
 rm -fr ./opt
 rm -fr debian
