@@ -6,3 +6,5 @@ An artificial login for recording credentials.
 4. Record!
 
 Qt 5.15 LTS and perhaps Qt 6.5 LTS.
+
+![screenshot](https://github.com/textbrowser/badger/blob/badger.png)
