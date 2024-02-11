@@ -30,16 +30,16 @@ QMAKE_CXXFLAGS_RELEASE += -Wall \
                           -std=c++17
 
 QMAKE_DISTCLEAN     += -r .qmake* \
-                       -r temp
+                       -r Temporary
 QMAKE_EXTRA_TARGETS = purge
 QMAKE_STRIP	    = echo
 
 INCLUDEPATH	+= Source
 
-MOC_DIR     = temp/moc
-OBJECTS_DIR = temp/obj
-RCC_DIR     = temp/rcc
-UI_DIR      = temp/ui
+MOC_DIR     = Temporary/moc
+OBJECTS_DIR = Temporary/obj
+RCC_DIR     = Temporary/rcc
+UI_DIR      = Temporary/ui
 
 FORMS          += UI/badger_ubuntu_22_04.ui
 HEADERS	       += Source/badger.h Source/badger_calendar_widget.h

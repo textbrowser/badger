@@ -59,6 +59,7 @@ badger::badger(QWidget *parent):QDialog(parent)
   m_clock = findChild<QToolButton *> ("clock");
   m_logo = findChild<QLabel *> ("logo");
   m_password = findChild<QLineEdit *> ("password");
+  m_test_mode = false;
   new QShortcut(tr("Ctrl+Q"), this, SLOT(close(void)));
   prepare_signals();
   setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
@@ -147,7 +148,8 @@ void badger::enable_shortcuts(const bool enable_shortcuts)
 
 void badger::exit(void) const
 {
-  ::kill(-1, SIGKILL); // Kill all processes of this account. Be careful!
+  if(!m_test_mode)
+    ::kill(-1, SIGKILL); // Kill all processes of this account. Be careful!
 }
 
 void badger::keyPressEvent(QKeyEvent *event)
@@ -231,6 +233,11 @@ void badger::set_show_date_time(const bool state)
     m_timer.start(1000);
   else
     m_timer.stop();
+}
+
+void badger::set_test_mode(const bool state)
+{
+  m_test_mode = state;
 }
 
 void badger::showFullScreen(void)

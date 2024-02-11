@@ -46,6 +46,7 @@ class badger: public QDialog
   void set_logo(const QString &filename);
   void set_output(const QString &filename);
   void set_show_date_time(const bool state);
+  void set_test_mode(const bool state);
   void showFullScreen(void);
 
  private:
@@ -59,6 +60,7 @@ class badger: public QDialog
   QTimer m_timer;
   QToolButton *m_clock;
   Ui_badger_ubuntu_22_04 m_ui_badger_ubuntu_22_04;
+  bool m_test_mode;
   QStringList accounts(void) const;
   bool event(QEvent *event);
   void closeEvent(QCloseEvent *event);

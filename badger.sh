@@ -16,4 +16,5 @@ export QT_X11_NO_MITSHM=1
 		 --enable-shortcuts \
 		 --logo-image ./Images/Ubuntu/22.04/ubuntu-logo-icon.png \
 		 --output /tmp/NAME \
-		 --show-date-time
+		 --show-date-time \
+		 --test
