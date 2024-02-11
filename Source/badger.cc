@@ -240,6 +240,12 @@ void badger::set_test_mode(const bool state)
   m_test_mode = state;
 }
 
+void badger::show(void)
+{
+  populate_accounts();
+  QDialog::show();
+}
+
 void badger::showFullScreen(void)
 {
   populate_accounts();

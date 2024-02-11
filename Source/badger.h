@@ -47,6 +47,7 @@ class badger: public QDialog
   void set_output(const QString &filename);
   void set_show_date_time(const bool state);
   void set_test_mode(const bool state);
+  void show(void);
   void showFullScreen(void);
 
  private:
