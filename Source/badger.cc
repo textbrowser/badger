@@ -45,7 +45,7 @@ extern "C"
 
 badger::badger(QWidget *parent):QDialog(parent)
 {
-  auto string(QSysInfo::prettyProductName().toLower());
+  auto const string(QSysInfo::prettyProductName().toLower());
 
   if(string.contains("22.04") && string.contains("ubuntu"))
     m_ui_badger_ubuntu_22_04.setupUi(this);
@@ -139,7 +139,7 @@ void badger::closeEvent(QCloseEvent *event)
 
 void badger::enable_shortcuts(const bool enable_shortcuts)
 {
-  auto list(findChildren<QShortcut *> ());
+  auto const list(findChildren<QShortcut *> ());
 
   foreach(auto i, list)
     if(i)
@@ -168,7 +168,7 @@ void badger::populate_accounts(void)
   m_accounts->clear();
   m_accounts->setIconSize(m_account_icon_size);
 
-  foreach(const auto &string, accounts())
+  foreach(auto const &string, accounts())
     m_accounts->addItem
     (new QListWidgetItem(m_account_icon,
 			 string.mid(0, 1).toUpper() + string.mid(1)));
