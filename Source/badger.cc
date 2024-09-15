@@ -32,7 +32,6 @@
 #include <QKeyEvent>
 #include <QShortcut>
 #include <QToolButton>
-#include <QtDebug>
 
 extern "C"
 {
@@ -49,6 +48,8 @@ badger::badger(QWidget *parent):QDialog(parent)
 
   if(string.contains("22.04") && string.contains("ubuntu"))
     m_ui_badger_ubuntu_22_04.setupUi(this);
+  else if(string.contains("24.04") && string.contains("ubuntu"))
+    m_ui_badger_ubuntu_24_04.setupUi(this);
 
   connect(&m_timer,
 	  &QTimer::timeout,
@@ -72,16 +73,24 @@ badger::~badger()
 
 QStringList badger::accounts(void) const
 {
-  char buffer[4096]; // Why sysconf()?
+  QByteArray buffer;
+  QStringList list;
+  auto buffer_size = sysconf(_SC_GETPW_R_SIZE_MAX);
   struct passwd *pwp = nullptr;
   struct passwd pw;
-  QStringList list;
 
+  if(buffer_size <= 0)
+    buffer_size = 8192;
+
+  buffer.resize(buffer_size);
   setpwent();
 
   while(true)
     {
-      if(getpwent_r(&pw, buffer, sizeof(buffer), &pwp))
+      if(getpwent_r(&pw,
+		    buffer.data(),
+		    static_cast<size_t> (buffer.size()),
+		    &pwp))
 	break;
       else if(!pwp ||
 	      !pwp->pw_dir ||

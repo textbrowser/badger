@@ -42,7 +42,8 @@ OBJECTS_DIR = Temporary/obj
 RCC_DIR     = Temporary/rcc
 UI_DIR      = Temporary/ui
 
-FORMS          += UI/badger_ubuntu_22_04.ui
+FORMS          += UI/badger_ubuntu_22_04.ui \
+		  UI/badger_ubuntu_24_04.ui
 HEADERS	       += Source/badger.h Source/badger_calendar_widget.h
 SOURCES	       += Source/badger.cc \
                   Source/badger_main.cc

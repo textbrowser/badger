@@ -111,7 +111,11 @@ int main(int argc, char *argv[])
 
   if(!QFileInfo(account_image).isReadable())
     {
-      qDebug() << argv[0] << ":" << "cannot read account-image file.";
+      if(argv[0])
+	qDebug() << argv[0] << ":" << "cannot read account-image file.";
+      else
+	qDebug() << "Cannot read account-image file.";
+
       return EXIT_FAILURE;
     }
 
@@ -131,5 +135,5 @@ int main(int argc, char *argv[])
   badger.set_show_date_time(show_date_time);
   badger.set_test_mode(test);
   badger.showFullScreen();
-  return application.exec();
+  return static_cast<int> (application.exec());
 }
