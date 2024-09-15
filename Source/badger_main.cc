@@ -112,9 +112,10 @@ int main(int argc, char *argv[])
   if(!QFileInfo(account_image).isReadable())
     {
       if(argv[0])
-	qDebug() << argv[0] << ":" << "cannot read account-image file.";
+	qDebug() << QObject::tr
+	  ("%1: cannot read account-image file.").arg(argv[0]);
       else
-	qDebug() << "Cannot read account-image file.";
+	qDebug() << QObject::tr("Cannot read account-image file.");
 
       return EXIT_FAILURE;
     }

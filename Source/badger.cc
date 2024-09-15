@@ -32,6 +32,7 @@
 #include <QKeyEvent>
 #include <QShortcut>
 #include <QToolButton>
+#include <QtDebug>
 
 extern "C"
 {
@@ -50,6 +51,8 @@ badger::badger(QWidget *parent):QDialog(parent)
     m_ui_badger_ubuntu_22_04.setupUi(this);
   else if(string.contains("24.04") && string.contains("ubuntu"))
     m_ui_badger_ubuntu_24_04.setupUi(this);
+  else
+    qDebug() << tr("The operating system is not supported.");
 
   connect(&m_timer,
 	  &QTimer::timeout,
@@ -75,14 +78,15 @@ QStringList badger::accounts(void) const
 {
   QByteArray buffer;
   QStringList list;
-  auto buffer_size = sysconf(_SC_GETPW_R_SIZE_MAX);
+  auto const buffer_size = sysconf(_SC_GETPW_R_SIZE_MAX);
   struct passwd *pwp = nullptr;
   struct passwd pw;
 
-  if(buffer_size <= 0)
-    buffer_size = 8192;
+  if(buffer_size > 0)
+    buffer.resize(static_cast<int> (buffer_size));
+  else
+    buffer.resize(8192);
 
-  buffer.resize(buffer_size);
   setpwent();
 
   while(true)
