@@ -16,7 +16,7 @@ done
 
 for file in Distributions/build*; do
     sed -i "s/NAME-.*_/$NAME-$VERSION\_/" $file
-    sed -i "s/NAME/$NAME/" $file
+    sed -i "s/NAME/$NAME/g" $file
 done
 
 file=badger.pro
