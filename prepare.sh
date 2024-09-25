@@ -27,5 +27,5 @@ sed -i "s/TARGET\s*=\s*NAME/TARGET = $NAME/" $file
 
 file=badger.sh
 
-sed -i "s/\/opt\/badger\/NAME/\/opt\/badger\/$NAME/" $file
+sed -i "s/\/opt\/NAME\/NAME/\/opt\/$NAME\/$NAME/" $file
 sed -i "s/\/tmp\/NAME/\/tmp\/$NAME/" $file
