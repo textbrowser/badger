@@ -16,23 +16,23 @@ if [ ! -r badger.pro ]; then
     exit 1
 fi
 
-# Preparing ./opt/badger:
+# Preparing ./opt/NAME:
 
 make distclean 2>/dev/null
-mkdir -p ./opt/badger
+mkdir -p ./opt/NAME
 qmake -o Makefile
 lupdate badger.pro 2>/dev/null && lrelease badger.pro 2>/dev/null
 make -j $(nproc)
-cp -p ./NAME ./opt/badger/.
-cp -p ./badger.sh ./opt/badger/.
-cp -pr ./Images ./opt/badger/.
+cp -p ./NAME ./opt/NAME/.
+cp -p ./badger.sh ./opt/NAME/.
+cp -pr ./Images ./opt/NAME/.
 
-# Preparing Badger-x.deb:
+# Preparing NAME-x.deb:
 
 mkdir -p debian/opt
 cp -pr ./Distributions/DEBIAN debian/.
-cp -r ./opt/badger debian/opt/.
-fakeroot dpkg-deb --build debian badger-2024.02.11_amd64.deb
+cp -r ./opt/NAME debian/opt/.
+fakeroot dpkg-deb --build debian NAME-2024.02.11_amd64.deb
 make distclean
 rm -fr ./opt
 rm -fr debian
