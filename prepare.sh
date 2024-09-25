@@ -10,12 +10,13 @@ if [ -z "$NAME" -o -z "$VERSION" ]; then
 fi
 
 for FOLDER in Distributions/DEBIAN; do
+    sed -i "s/NAME/$NAME/" $FOLDER/control
     sed -i "s/Version: .*/Version: $VERSION/" $FOLDER/control
 done
 
 for file in Distributions/build*; do
-    sed -i "s/$NAME-.*_/$NAME-$VERSION\_/" $file
-    sed -i "s/.\/NAME/.\/$NAME/" $file
+    sed -i "s/NAME-.*_/$NAME-$VERSION\_/" $file
+    sed -i "s/NAME/$NAME/" $file
 done
 
 file=badger.pro
