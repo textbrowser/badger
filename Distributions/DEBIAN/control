@@ -3,10 +3,10 @@ Depends: libqt5core5a (>= 5.15.0),
 	 libqt5gui5 (>= 5.15.0),
 	 libqt5widgets5 (>= 5.15.0)
 Maintainer: f83043e79dc03a0abfbcbc376879a97d66f2cacb@protonmail.ch
-Package: Badger
+Package: NAME
 Priority: optional
 Section: Education
 Version: 2024.02.11
-Description: Badger
- Welcome to Badger!
+Description: NAME
+ Welcome to NAME!
  Badger is governed by a BSD license. Enjoy!
