@@ -32,6 +32,8 @@
 
 class badger_calendar_widget: public QCalendarWidget
 {
+  Q_OBJECT
+
  public:
   badger_calendar_widget(QWidget *parent):QCalendarWidget(parent)
   {

@@ -35,6 +35,8 @@
 
 class badger: public QDialog
 {
+  Q_OBJECT
+
  public:
   badger(QWidget *parent);
   ~badger();
