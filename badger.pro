@@ -1,4 +1,4 @@
-purge.commands = find . -name '*~' -exec rm {} \\;
+purge.commands = find . -name \'*~\' -exec rm {} \\;
 
 CONFIG		+= qt release warn_on
 DEFINES		+= QT_DEPRECATED_WARNINGS
