@@ -10,7 +10,8 @@ export QT_X11_NO_MITSHM=1
 
 name=/opt/NAME/NAME
 
-if [ -x ./NAME ]; then
+if [ -x ./NAME ]
+then
     name=./NAME
 fi
 
