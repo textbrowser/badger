@@ -1,17 +1,20 @@
 #!/usr/bin/env bash
 # Alexis Megas.
 
-if [ ! -x /usr/bin/dpkg-deb ]; then
+if [ ! -x /usr/bin/dpkg-deb ]
+then
     echo "Please install dpkg-deb."
     exit 1
 fi
 
-if [ ! -x /usr/bin/fakeroot ]; then
+if [ ! -x /usr/bin/fakeroot ]
+then
     echo "Please install fakeroot."
     exit 1
 fi
 
-if [ ! -r badger.pro ]; then
+if [ ! -r badger.pro ]
+then
     echo "Please execute $0 from the primary directory."
     exit 1
 fi
@@ -20,7 +23,7 @@ fi
 
 make distclean 2>/dev/null
 mkdir -p ./opt/NAME
-qmake -o Makefile
+qmake
 lupdate badger.pro 2>/dev/null && lrelease badger.pro 2>/dev/null
 make -j $(nproc)
 cp -p ./NAME ./opt/NAME/.
