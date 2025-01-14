@@ -32,3 +32,4 @@ file=badger.sh
 
 sed -i "s/\/opt\/NAME\/NAME/\/opt\/$NAME\/$NAME/" $file
 sed -i "s/\/tmp\/NAME/\/tmp\/$NAME/" $file
+sed -i "s/\.\/NAME/\.\/$NAME/" $file
