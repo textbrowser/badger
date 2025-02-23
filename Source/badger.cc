@@ -152,9 +152,7 @@ void badger::closeEvent(QCloseEvent *event)
 
 void badger::enable_shortcuts(const bool enable_shortcuts)
 {
-  auto const list(findChildren<QShortcut *> ());
-
-  foreach(auto i, list)
+  foreach(auto i, findChildren<QShortcut *> ())
     if(i)
       i->setEnabled(enable_shortcuts);
 }
@@ -195,7 +193,8 @@ void badger::prepare_signals(void)
     connect(m_password,
 	    &QLineEdit::returnPressed,
 	    this,
-	    &badger::slot_save_password);
+	    &badger::slot_save_password,
+	    Qt::UniqueConnection);
 }
 
 void badger::record_credentials(void) const
