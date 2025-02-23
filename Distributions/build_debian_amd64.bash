@@ -20,7 +20,7 @@ then
     exit 1
 fi
 
-# Preparing ./opt/NAME:
+# Preparing ./opt/NAME.
 
 make distclean 2>/dev/null
 mkdir -p ./opt/NAME
@@ -31,7 +31,7 @@ cp -p ./NAME ./opt/NAME/.
 cp -p ./badger.sh ./opt/NAME/.
 cp -pr ./Images ./opt/NAME/.
 
-# Preparing NAME-x.deb:
+# Preparing NAME-x.deb.
 
 mkdir -p debian/opt
 cp -pr ./Distributions/DEBIAN debian/.
