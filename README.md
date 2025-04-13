@@ -8,4 +8,4 @@ An artificial login for recording credentials.
 
 Qt LTS please.
 
-![screenshot](https://github.com/textbrowser/badger/blob/main/badger.png)
+![Screenshot](https://raw.githubusercontent.com/textbrowser/badger/refs/heads/main/badger.png)
